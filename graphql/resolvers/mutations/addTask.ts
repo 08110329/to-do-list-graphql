@@ -1,9 +1,9 @@
-import { MutationResolvers } from "@/generated";
+import { AddTaskInput } from "@/generated";
 import { Task } from "@/graphql/model";
 
-export const addTask: MutationResolvers["addTask"] = async (
+export const addTask= async (
   _: unknown,
-  { input }
+  { input }: { input: AddTaskInput}
 ) => {
   try {
     const newTask = await Task.create({
@@ -13,10 +13,10 @@ export const addTask: MutationResolvers["addTask"] = async (
       createdAt: new Date(),
       updatedAt: new Date(),
     });
-    console.log(newTask);
 
     return newTask;
   } catch (error) {
     throw new Error("Failed to add task: : <error message>");
   }
 };
+

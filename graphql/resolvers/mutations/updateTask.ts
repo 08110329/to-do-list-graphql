@@ -1,9 +1,9 @@
-import { MutationResolvers } from "@/generated";
+import { MutationResolvers, UpdateTaskInput } from "@/generated";
 import { Task } from "@/graphql/model";
 
-export const updateTask: MutationResolvers["updateTask"] = async (
+export const updateTask = async (
   _: unknown,
-  { input }
+  { input } : {input: UpdateTaskInput}
 ) => {
   try {
     const updateTask = await Task.findByIdAndUpdate(
